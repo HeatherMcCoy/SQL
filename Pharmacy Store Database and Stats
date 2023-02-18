@@ -1,0 +1,19 @@
+CREATE TABLE pharmacy_stock (id INTEGER, name TEXT, minimum INTEGER, maximum INTEGER, current INTEGER);
+
+insert into pharmacy_stock values (1, "Lisinopril", 5, 10, 8);
+insert into pharmacy_stock values (2, "Metformin", 10, 20, 9);
+insert into pharmacy_stock values (3, "Atorvastatin", 4, 8, 10);
+insert into pharmacy_stock values (4, "metoprolol",3,6,4);
+insert into pharmacy_stock values (5, "captopril",6,12,10);
+insert into pharmacy_stock values (6, "Trulicity",1,3,2);
+insert into pharmacy_stock values (7, "Humira",1,3,2);
+insert into pharmacy_stock values (8,"amoxicillin",20,30,22);
+insert into pharmacy_stock values (9, "cephalexin",10,15,16);
+insert into pharmacy_stock values (10,"Xeljanz",4,8,3);
+insert into pharmacy_stock values (11, "capecitabine",10,12,9);
+insert into pharmacy_stock values (12, "Aimovig",2,4,3);
+insert into pharmacy_stock values (13, "Creon",10,15,9);
+insert into pharmacy_stock values (14, "omeprazole",20,30,22);
+insert into pharmacy_stock values (15, "magnesium oxide",5,8,4);
+
+select * from pharmacy_stock where current < minimum order by name
