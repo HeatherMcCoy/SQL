@@ -1,0 +1,73 @@
+/* Create table about the people and what they do here */
+
+/* KY Celebrity Hometowns */
+CREATE TABLE Ky_Celebs (id INTEGER PRIMARY KEY, name TEXT, hometown TEXT, DOB INTEGER);
+
+INSERT INTO Ky_Celebs VALUES (1, "Johnny Depp", "Owensboro", 06091963);
+INSERT INTO Ky_Celebs VALUES (2, "George Clooney", "Lexington", 05061961);
+INSERT INTO Ky_Celebs VALUES (3, "Jennifer Lawrence", "Indian Hills", 08151990);
+INSERT INTO Ky_Celebs VALUES (4, "Billy Ray Cyrus", "Flatwoods", 08251961);
+INSERT INTO Ky_Celebs VALUeS (5, "Diane Sawyer", "Glasgow", 1945);
+INSERT INTO Ky_Celebs VALUES (6, "Nick Lacey", "Harlan", 11091973);
+INSERT INTO Ky_Celebs VALUES (7, "Muhammad Ali", "Louisville", 01171942);
+INSERT INTO Ky_Celebs VALUES (8, "Loretta Lynn", "Butcher Hollow", 04141932);
+INSERT INTO Ky_Celebs VALUES (9, "Josh Hutcherson", "Union", 10121992);
+INSERT INTO Ky_Celebs VALUES (10, "Chris Stapleton", "Lexington", 04151978);
+INSERT INTO Ky_Celebs VALUES (11, "Chris Hardwick","Louisville", "11231971");
+INSERT INTO Ky_Celebs VALUES (12, "Keith Whitley", "Bedford", 07011955);
+INSERT INTO Ky_Celebs VALUES (13, "Dwight Yoakam", "Pikeville", 10231956);
+INSERT INTO Ky_Celebs VALUES (14, "Maggie Lawson", "Louisville", 08121980);
+INSERT INTO Ky_Celebs VALUES (15, "Naomi Judd", "Ashland", "01111946");
+
+
+/* Hometown Population */
+
+CREATE TABLE population (id INTEGER PRIMARY KEY, hometown TEXT, population INTEGER);
+
+INSERT INTO population VALUES (1, "Owensboro", 60011);
+INSERT INTO population VALUES (2, "Lexington", 321793);
+INSERT INTO population VALUES (3, "Indian Hills", 2836);
+INSERT INTO population VALUES (4, "Flatwoods", 7261);
+INSERT INTO population VALUES (5, "Glasgow", 15087);
+INSERT INTO population VALUES (6, "Harlan", 1718);
+INSERT INTO population VALUES (7, "Louisville", 628594);
+INSERT INTO population VALUES (8, "Butcher Hollow", 1500);
+INSERT INTO population VALUES (9, "Union", 7531);
+INSERT INTO population VALUES (10, "Bedford", 526);
+INSERT INTO population VALUES (11, "Pikeville", 7327);
+INSERT INTO population VALUES (12, "Monticello", 5694);
+INSERT INTO population VALUES (13, "Paducah", 26278);
+INSERT INTO population VALUES (14, "Greenup", 1053);
+INSERT INTO population VALUES (15, "Elizabethtown", 31931);
+
+
+/* Celeb Movies */
+
+CREATE TABLE movies (id INTEGER PRIMARY KEY, name TEXT, title TEXT, celeb_id INTEGER);
+
+INSERT INTO movies VALUES (1, "Johnny Depp", "Into the Woods",1);
+INSERT INTO movies VALUES (2, "Johnny Depp", "Pirates of the Caribbean",1);
+INSERT INTO movies VALUES (3, "George Clooney", "O Brother Where ART THOU",2);
+INSERT INTO movies VALUES (4, "Diane Sawyer", "Amanda Knox",5);
+INSERT INTO movies VALUES (5, "Jennifer Lawrence", "Hunger Games",3);
+INSERT INTO movies VALUES (6, "Jennifer Lawrence", "Silver Lingings Playbook",3);
+INSERT INTO movies VALUES (7, "Billy Ray Cyrus","Christmas in Canaan",4);
+
+Select * from ky_celebs;
+Select * from movies;
+Select * from population;
+
+/* KY Celebs with hometown populatins greater than 10000 */
+
+SELECT k.name, k.hometown, p.population 
+    FROM ky_celebs as k 
+    LEFT OUTER JOIN population as p
+    ON k.hometown = p.hometown
+    where p.population >10000;
+
+/* CELEBS, HOMETOWN and MOVIES */
+    
+SELECT k.name, k.hometown, m.title
+    FROM ky_celebs as k
+    JOIN movies as m
+    ON k.id = m.celeb_id;
