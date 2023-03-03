@@ -66,3 +66,11 @@ AND length(orderid) = 6
 AND orderid<> 'Order ID';
 
 /* Answer = total customers = 278 and avg amount spent was 13.82*/
+
+/* List all the products sold in Los Angeles in February, and include how many of each were sold. */
+
+SELECT distinct Product, sum(Quantity) as Total_Sold
+FROM BIT_DB.FebSales
+WHERE location like '%Los Angeles%'
+Order by product;
+
